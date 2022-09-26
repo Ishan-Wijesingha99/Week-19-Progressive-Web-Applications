@@ -2,16 +2,16 @@ import { openDB } from 'idb';
 
 const initdb = async () =>
 
-// TODO: Add a comment explaining what this method does
+// creates indexedDB database
 
   openDB('todos', 1, {
-    // TODO: Add a comment explaining the functionality of this method:
+    // if database exists, do this, log to the console the database already exists
     upgrade(db) {
       if (db.objectStoreNames.contains('todos')) {
         console.log('todos database already exists');
         return;
       }
-      // TODO: Add a comment explaining what we're doing with the object store:
+      // if it doesn't exist, create the database and log to the console it exists
       db.createObjectStore('todos', { keyPath: 'id', autoIncrement: true });
       console.log('todos database created');
     },
